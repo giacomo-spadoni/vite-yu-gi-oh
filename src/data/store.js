@@ -189,7 +189,7 @@ import { reactive } from 'vue';
 const carta = reactive([]);
 
 axios
-  .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=1000&offset=0')
+  .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=5000&offset=0')
   .then((response) => {
     carta.push(response.data.data);
   });
