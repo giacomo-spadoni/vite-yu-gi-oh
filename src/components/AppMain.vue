@@ -9,12 +9,38 @@ export default {
   data() {
     return {
       store,
+      arche: [],
+      archetype: [],
+      allArchetype: '',
     };
   },
   methods: {
     getImage(nomefile) {
       return new URL(`../assets/${nomefile}`, import.meta.url);
     },
+    createArchetype() {
+      axios
+        .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=1000&offset=0')
+        .then((response) => {
+          this.allArchetype = response.data.data;
+          console.log(this.allArchetype[0].archetype);
+          for (let i = 0; i < this.allArchetype.length; i++) {
+            if (
+              this.archetype.includes(this.allArchetype[i].archetype) ||
+              !this.allArchetype[i].archetype
+            ) {
+            } else {
+              this.archetype.push(this.allArchetype[i].archetype);
+              this.arche.push(this.allArchetype[i].archetype);
+            }
+          }
+          console.log(this.archetype);
+          console.log(this.arche);
+        });
+    },
+  },
+  mounted() {
+    this.createArchetype();
   },
 };
 </script>
@@ -23,14 +49,18 @@ export default {
   <main>
     <section>
       <div class="select">
-        <select name="" id="">
-          <option value="alien">alien</option>
-          <option value="beast">beast</option>
-          <option value="dark">dark</option>
+        <select v-model="archetype" name="archetype">
+          <option v-for="(element, i) in arche" :value="element">
+            {{ element }}
+          </option>
         </select>
       </div>
       <div class="card-container">
-        <CardList v-for="(carta, i) in store" :card="store[i]" />
+        <CardList
+          v-for="(carta, i) in store[0]"
+          :archetype="archetype"
+          :card="carta"
+        />
       </div>
     </section>
   </main>

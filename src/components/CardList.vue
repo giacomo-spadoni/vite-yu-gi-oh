@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['card'],
+  props: ['card', 'archetype'],
   data() {
     return {};
   },
@@ -9,7 +9,8 @@ export default {
       return new URL(`../assets/${nomefile}`, import.meta.url);
     },
     test() {
-      console.log(this.card.card_images[0].image_url);
+      // console.log(this.card.archetype);
+      // console.log(this.archetype);
     },
   },
   mounted() {
@@ -19,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <div class="card">
+  <div v-show="this.card.archetype == this.archetype" class="card">
     <img :src="this.card.card_images[0].image_url" alt="" />
     <h2>{{ this.card.name }}</h2>
     <div class="type">{{ this.card.archetype }}</div>
