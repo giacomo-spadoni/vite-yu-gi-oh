@@ -28,16 +28,6 @@ export default {
             this.arche.push(this.allArchetype[i].archetype_name);
             this.archetype.push(this.allArchetype[i].archetype_name);
           }
-          // for (let i = 0; i < this.allArchetype.length; i++) {
-          //   if (
-          //     this.archetype.includes(this.allArchetype[i].archetype) ||
-          //     !this.allArchetype[i].archetype
-          //   ) {
-          //   } else {
-          //     this.archetype.push(this.allArchetype[i].archetype);
-          //     this.arche.push(this.allArchetype[i].archetype);
-          //   }
-          // }
           console.log(this.archetype);
           console.log(this.arche);
         });

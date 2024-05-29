@@ -8,10 +8,7 @@ export default {
     getImage(nomefile) {
       return new URL(`../assets/${nomefile}`, import.meta.url);
     },
-    test() {
-      // console.log(this.card.archetype);
-      // console.log(this.archetype);
-    },
+    test() {},
   },
   mounted() {
     this.test();
