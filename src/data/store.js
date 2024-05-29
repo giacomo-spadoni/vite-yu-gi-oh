@@ -188,10 +188,20 @@ import { reactive } from 'vue';
 
 const carta = reactive([]);
 
+let test = [];
 axios
-  .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=5000&offset=0')
+  .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=1000&offset=0')
   .then((response) => {
-    carta.push(response.data.data);
+    console.log(response.data.data[0]);
+
+    for (let i = 0; i < response.data.data.length; i++) {
+      carta.push(response.data.data[i]);
+    }
+    console.log(carta);
   });
 
+// for (let i = 0; i < test[0].length; i++) {
+//   carta.push(test[0][i]);
+// }
+// console.log(carta);
 export default carta;

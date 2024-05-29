@@ -23,13 +23,13 @@ export default {
         .get('https://db.ygoprodeck.com/api/v7/archetypes.php')
         .then((response) => {
           this.allArchetype = response.data;
-          console.log(this.allArchetype);
+          // console.log(this.allArchetype);
           for (let i = 0; i < this.allArchetype.length; i++) {
             this.arche.push(this.allArchetype[i].archetype_name);
             this.archetype.push(this.allArchetype[i].archetype_name);
           }
-          console.log(this.archetype);
-          console.log(this.arche);
+          // console.log(this.archetype);
+          // console.log(this.arche);
         });
     },
   },
@@ -51,7 +51,7 @@ export default {
       </div>
       <div class="card-container">
         <CardList
-          v-for="(carta, i) in store[0]"
+          v-for="(carta, i) in store"
           :archetype="archetype"
           :card="carta"
         />
@@ -73,7 +73,7 @@ section {
 }
 
 select {
-  width: 100px;
+  width: 200px;
   font-size: 20px;
   margin-top: 1rem;
 }
@@ -85,7 +85,6 @@ select {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  /* align-items: baseline; */
   padding: 2rem;
 }
 </style>
